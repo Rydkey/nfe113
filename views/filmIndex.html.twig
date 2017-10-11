@@ -1,0 +1,25 @@
+{% extends "layout.html.twig" %}
+{#mettre le contenue de la page dans les balises block#}
+
+{#notifications#}
+
+{% block content %}
+    <section class="section team-section pb-5">
+        <div class="row text-center">
+            {% for film in films %}
+                <!--Grid column-->
+                <div class="col-lg-3 col-md-6 mb-r">
+                    <div class="avatar">
+                        <img class="img-fluid img-thumbnail" src="{{ asset(film.image,'imgVIDEO') }}"
+                             alt="Image de {{ film.titrevideo }}" class="rounded-circle z-depth-1">
+                    </div>
+                    <h4>{{ film.titrevideo }}</h4>
+                    <h6 class="font-bold blue-text">{{ film.duree }} min</h6>
+                    <p><a href="{{ path('film',{id:film.idvideo}) }}">Détails</a></p>
+                </div>
+                <!--Grid column-->
+            {% endfor %}
+        </div>
+        <!--Grid row-->
+    </section>
+{% endblock %}

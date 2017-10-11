@@ -1,0 +1,31 @@
+{% extends "layout.html.twig" %}
+{#mettre le contenue de la page dans les balises block#}
+
+{#notifications#}
+
+{% block content %}
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Image</th>
+            <th>Prenom</th>
+            <th>Nom</th>
+            <th>Date de naissance</th>
+            <th>Pays</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for participant in participants %}
+            <div class="row">
+                <tr>
+                    <td><img width="90px" height="120px" src="{{ asset(participant.image,'imgPARTICIPANT') }}" alt="Image de {{ participant.prenomparticipant }}"></td>
+                    <td>{{ participant.prenomparticipant }}</td>
+                    <td>{{ participant.nomparticipant }}</td>
+                    <td>{{ participant.datenaissance|date('d/m/Y') }}</td>
+                    <td>{{ participant.idpays.nompays }}</td>
+                </tr>
+            </div>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

@@ -8,10 +8,11 @@ vous trouverez ici le travail réalisé par RISSER Rémy, étudiant au CNAM de b
        $ composer install
        $ composer dump-autoload
        $ mkdir app/cache
-       $ sudo chmod 777 app/cache (*)      
+       $ sudo chmod 777 app/cache (1)      
    .
     Ensuite, créé une nouvelle bdd à l'aide l'export "_video.sql_" avec un utilisateur ayant tout les droits sur cette dernière :
     <ul>
         <li>user : dev_video</li>
         <li>mot de passe : passwdvideo</li>
     </ul>
+    _1 : l'application nécéssite un cache accéssible en écriture_

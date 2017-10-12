@@ -15,6 +15,8 @@ namespace videoBundle\Entity;
  */
 class typeVideo {
 
+
+
   /**
    * @Id
    * @OneToOne(targetEntity="videoBundle\Entity\video", cascade={"persist"})

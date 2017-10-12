@@ -11,12 +11,14 @@
         <div class="col-lg-9">
             <div class="row">
                 <h5>Titre : </h5>{{ film.titrevideo }} |
-                {#<td>{{ film.participant}}</td>#}
-                <h5>Type : </h5>{{ film_type.0 }}
+                <h5>type : </h5>
+                    {% for type in film.type %}
+                        {{ type.libtype }}
+                    {% endfor %}
             </div>
             <hr>
             <div class="row">
-                {{ film.synopsis}}
+                {{ film.synopsis }}
             </div>
         </div>
     </div>

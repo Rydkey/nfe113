@@ -202,4 +202,28 @@ class participant
 
     return $this;
   }
+
+    /**
+     * Add video
+     *
+     * @param \videoBundle\Entity\video $video
+     *
+     * @return participant
+     */
+    public function addVideo(\videoBundle\Entity\video $video)
+    {
+        $this->video[] = $video;
+
+        return $this;
+    }
+
+    /**
+     * Remove video
+     *
+     * @param \videoBundle\Entity\video $video
+     */
+    public function removeVideo(\videoBundle\Entity\video $video)
+    {
+        $this->video->removeElement($video);
+    }
 }

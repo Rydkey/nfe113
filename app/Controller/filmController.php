@@ -12,9 +12,7 @@ use videoBundle\Entity\video;
 
 function filmDetailController(Silex\Application $app, $id) {
   $film = _getFilm($app, $id);
-  $film_type = _getFilmType($app, $id);
-//  $film_participants = _getFilmParticipant($app, $id);
-  return $app['twig']->render('filmDetail.html.twig', array('film' => $film, 'film_type' => $film_type, /*'film_participants' => $film_participants*/));
+  return $app['twig']->render('filmDetail.html.twig', array('film' => $film));
 }
 
 function filmIndexController(Silex\Application $app) {

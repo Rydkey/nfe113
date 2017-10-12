@@ -13,7 +13,8 @@ namespace videoBundle\Entity;
  * @Table(name="type")
  * @Entity()
  */
-class type {
+class type
+{
   /**
    * @Id
    * @Column(type="integer")
@@ -26,6 +27,21 @@ class type {
    *
    */
   protected $LIB_TYPE;
+  /**
+   * @ManyToMany(targetEntity="videoBundle\Entity\video", cascade={"persist"})
+   * @JoinTable(name="type_video",
+   *  joinColumns={@JoinColumn(name="ID_TYPE", referencedColumnName="ID_TYPE")},
+   *   inverseJoinColumns={@JoinColumn(name="ID_VIDEO", referencedColumnName="ID_VIDEO", unique=false)}
+   *   )
+   **/
+  protected $type;
+
+  /**
+   * Constructor
+   */
+  public function __construct() {
+    $this->type = new \Doctrine\Common\Collections\ArrayCollection();
+  }
 
   /**
    * Get iDTYPE
@@ -34,6 +50,15 @@ class type {
    */
   public function getIDTYPE() {
     return $this->ID_TYPE;
+  }
+
+  /**
+   * Get lIBTYPE
+   *
+   * @return string
+   */
+  public function getLIBTYPE() {
+    return $this->LIB_TYPE;
   }
 
   /**
@@ -50,11 +75,33 @@ class type {
   }
 
   /**
-   * Get lIBTYPE
+   * Add type
    *
-   * @return string
+   * @param \videoBundle\Entity\video $type
+   *
+   * @return type
    */
-  public function getLIBTYPE() {
-    return $this->LIB_TYPE;
+  public function addType(\videoBundle\Entity\video $type) {
+    $this->type[] = $type;
+
+    return $this;
+  }
+
+  /**
+   * Remove type
+   *
+   * @param \videoBundle\Entity\video $type
+   */
+  public function removeType(\videoBundle\Entity\video $type) {
+    $this->type->removeElement($type);
+  }
+
+  /**
+   * Get type
+   *
+   * @return \Doctrine\Common\Collections\Collection
+   */
+  public function getType() {
+    return $this->type;
   }
 }

@@ -53,7 +53,22 @@ class video
    *   )
    **/
   protected $participant;
+  /**
+   * @ManyToMany(targetEntity="videoBundle\Entity\type", cascade={"persist"})
+   * @JoinTable(name="type_video",
+   *  joinColumns={@JoinColumn(name="ID_VIDEO", referencedColumnName="ID_VIDEO")},
+   *   inverseJoinColumns={@JoinColumn(name="ID_TYPE", referencedColumnName="ID_TYPE", unique=false)}
+   *   )
+   **/
+  protected $type;
 
+  /**
+   * Constructor
+   */
+  public function __construct() {
+    $this->participant = new \Doctrine\Common\Collections\ArrayCollection();
+    $this->type = new \Doctrine\Common\Collections\ArrayCollection();
+  }
 
   /**
    * Get iDVIDEO
@@ -196,27 +211,78 @@ class video
     return $this;
   }
 
-    /**
-     * Set participant
-     *
-     * @param \videoBundle\Entity\participant $participant
-     *
-     * @return video
-     */
-    public function setParticipant(\videoBundle\Entity\participant $participant = null)
-    {
-        $this->participant = $participant;
+  /**
+   * Get participant
+   *
+   * @return \videoBundle\Entity\participant
+   */
+  public function getParticipant() {
+    return $this->participant;
+  }
 
-        return $this;
-    }
+  /**
+   * Set participant
+   *
+   * @param \videoBundle\Entity\participant $participant
+   *
+   * @return video
+   */
+  public function setParticipant(\videoBundle\Entity\participant $participant = null) {
+    $this->participant = $participant;
 
-    /**
-     * Get participant
-     *
-     * @return \videoBundle\Entity\participant
-     */
-    public function getParticipant()
-    {
-        return $this->participant;
-    }
+    return $this;
+  }
+
+  /**
+   * Add participant
+   *
+   * @param \videoBundle\Entity\participant $participant
+   *
+   * @return video
+   */
+  public function addParticipant(\videoBundle\Entity\participant $participant) {
+    $this->participant[] = $participant;
+
+    return $this;
+  }
+
+  /**
+   * Remove participant
+   *
+   * @param \videoBundle\Entity\participant $participant
+   */
+  public function removeParticipant(\videoBundle\Entity\participant $participant) {
+    $this->participant->removeElement($participant);
+  }
+
+  /**
+   * Add type
+   *
+   * @param \videoBundle\Entity\type $type
+   *
+   * @return video
+   */
+  public function addType(\videoBundle\Entity\type $type) {
+    $this->type[] = $type;
+
+    return $this;
+  }
+
+  /**
+   * Remove type
+   *
+   * @param \videoBundle\Entity\type $type
+   */
+  public function removeType(\videoBundle\Entity\type $type) {
+    $this->type->removeElement($type);
+  }
+
+  /**
+   * Get type
+   *
+   * @return \Doctrine\Common\Collections\Collection
+   */
+  public function getType() {
+    return $this->type;
+  }
 }

@@ -4,10 +4,10 @@
 #AddHandler application/x-httpd-php55 .php
 
 # Do the regex check against the URI here, if match, set the "require_auth" var
+#RewriteEngine On
 
 <IfModule mod_rewrite.c>
     Options -MultiViews
-    RewriteEngine On
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteRule ^ web/app.php [QSA,L]
 </IfModule>

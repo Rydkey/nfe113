@@ -17,35 +17,35 @@ $app->match($dir, function () use ($app) {
   return indexController($app);
 })->bind('home');
 
-$app->match($dir . 'test', function () use ($app) {
-  return testController($app);
-})->bind('test');
+$app->match($dir . "connection", function (Request $request) use ($app) {
+  return connectionController($request, $app);
+})->bind("connection");
 
-$app->match($dir . 'films', function () use ($app) {
-  return filmIndexController($app);
-})->bind('films');
+$app->match($dir . "deconnection", function (Request $request) use ($app) {
+  $app['session']->set("user", null);
+  return $app->redirect($app['url_generator']->generate("home"));
+})->bind("deconnection");
 
-$app->match($dir . 'film/{id}', function ($id) use ($app) {
-  if (!isset($id)) {
-    $app->abort(404, "Film $id does not exist.");
+$app->match($dir . "reservation/{salleid}", function (Request $request, $salleid) use ($app) {
+  if ($app['session']->get('user')['info'] == null) {
+    return $app->redirect($app['url_generator']->generate("connection"));
+  } else {
+    return newReservation($request, $app, $salleid);
   }
-  $post = $id;
-  return filmDetailController($app,$post);
-})->bind('film');
+})->bind('reservation');
 
-$app->match($dir . 'participants', function () use ($app) {
-  return participantIndexController($app);
-})->bind('participants');
+$app->match($dir . "mes-reservations", function (Request $request) use ($app) {
+  if ($app['session']->get('user')['info'] == null) {
+    return $app->redirect($app['url_generator']->generate("connection"));
+  } else {
+    return reservationIndex($app['session']->get('user')['info'], $app);
+  }
+})->bind("mes-reservations");
 
-$app->match($dir . 'ajouter-type', function (Request $request) use ($app) {
-  return newTypeController($request, $app);
-})->bind('newtype');
-
-$app->match($dir . 'ajouter-categorie', function (Request $request) use ($app) {
-  return newCategorieController($request, $app);
-})->bind('newcat');
-
-$app->match($dir . 'ajouter-participant', function (Request $request) use ($app) {
-  $app['session']->getFlashbag()->add('warning', 'veillez à placer votre image dans le répertoire /web/img/');
-  return newParticipantController($request, $app);
-})->bind('newpart');
+$app->match($dir . "ma-reservation/{id}", function (Request $request, $id) use ($app) {
+  if ($app['session']->get('user')['info'] == null) {
+    return $app->redirect($app['url_generator']->generate("connection"));
+  } else {
+    return reservationDetail($app, $id);
+  }
+})->bind("ma-reservation");

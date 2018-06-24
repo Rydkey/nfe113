@@ -4,4 +4,33 @@
 {#notifications#}
 
 {% block content %}
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">Numéro de la salle</th>
+            <th scope="col">Type de la salle</th>
+            <th scope="col">Capacité</th>
+            {% if app.session.get('user') is not empty %}
+                <th scope="col">Actions</th>
+            {% endif %}
+        </tr>
+        </thead>
+        <tbody>
+        {% for salle in salles %}
+            <tr>
+                <th scope="row"> {{ salle.numero }}</th>
+                <td>{{ salle.typesalleid }}</td>
+                <td>{{ salle.capacite }}</td>
+                {% if app.session.get('user') is not empty %}
+                    <th scope="col">
+                        <a class="btn btn-outline-success" href="{{ path('reservation',
+                            {'salleid': salle.id}) }}">Réserver</a>
+                        {% if app.session.get('user')['info']['0'].isAdmin is not empty %}
+                            <a class="btn btn-outline-primary" href="">Modification</a>
+                        {% endif %}
+                    </th>
+                {% endif %}
+            </tr>
+        {% endfor %}
+    </table>
 {% endblock %}

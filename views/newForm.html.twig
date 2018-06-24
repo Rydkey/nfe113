@@ -4,7 +4,7 @@
 {% block content %}
     {#notifications#}
     {% for message in app.session.getFlashBag.get('notice') %}
-        <div class="alert alert-success alert-dismissable">
+        <div class="alert alert-success alert-dismissible fade show">
             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">
                 &times;
             </button>
@@ -12,7 +12,7 @@
         </div>
     {% endfor %}
     {% for message in app.session.getFlashBag.get('warning') %}
-        <div class="alert alert-warning">
+        <div class="alert alert-warning alert-dismissible fade show">
             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">
                 &times;
             </button>
@@ -20,7 +20,7 @@
         </div>
     {% endfor %}
     {% for message in app.session.getFlashBag.get('error') %}
-        <div class="alert alert-error">
+        <div class="alert alert-danger alert-dismissible fade show">
             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">
                 &times;
             </button>
@@ -28,8 +28,15 @@
         </div>
     {% endfor %}
     {{ form_start(form) }}
+    <table>
+        {% for input in form %}
+            <tr>
+                <td>{{ form_label(input) }}</td>
+                <td>{{ form_widget(input) }}</td>
+            </tr>
+        {% endfor %}
+    </table>
     {{ form_widget(form) }}
     <input type="submit" name="submit" class="btn btn-lg btn-success"/>
     {{ form_end(form) }}
-    {#{{ dump(test) }}#}
 {% endblock %}

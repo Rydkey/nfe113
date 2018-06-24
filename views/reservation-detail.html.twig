@@ -1,0 +1,35 @@
+{% extends "layout.html.twig" %}
+{#mettre le contenue de la page dans les balises block#}
+
+{#notifications#}
+
+{% block content %}
+    {#{{ dump(reservation) }}#}
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">Numéro de la salle</th>
+            <th scope="col">Date de la reservation</th>
+            <th scope="col">heure dedébut</th>
+            <th scope="col">heure de fin</th>
+            <th scope="col">Personnes</th>
+            <th scope="col">Code</th>
+            <th scope="col">Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <th scope="row"> {{ reservation.salleid.numero }}</th>
+            <td>{{ reservation.dateDebut|date('D d M') }}</td>
+            <td>{{ reservation.dateDebut|date('H:i') }}</td>
+            <td>{{ reservation.dateFin|date('H:i') }}</td>
+            <td>
+                {% for personne in reservation.personneid %}
+                    {{ personne }}<br>
+                {% endfor %}
+            </td>
+            <td>{{ reservation.code }}</td>
+            <td><a class="btn btn-outline-danger" href="">Annuler</a></td>
+        </tr>
+    </table>
+{% endblock %}

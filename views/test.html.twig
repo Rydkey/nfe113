@@ -4,5 +4,8 @@
 {#notifications#}
 
 {% block content %}
-    {#{{ url }}#}
+    {% for result in results %}
+        {{ result.id }}
+        {{ result.nom }} <br>
+    {% endfor %}
 {% endblock %}

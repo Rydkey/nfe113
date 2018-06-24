@@ -1,0 +1,29 @@
+{% extends "layout.html.twig" %}
+{#mettre le contenue de la page dans les balises block#}
+
+{#notifications#}
+
+{% block content %}
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">Numéro de la salle</th>
+            <th scope="col">Date de début</th>
+            <th scope="col">durée</th>
+            {% if app.session.get('user') is not empty %}
+                <th scope="col">Actions</th>
+            {% endif %}
+        </tr>
+        </thead>
+        <tbody>
+        {% for reservation in reservations %}
+            <tr>
+                <th scope="row"> {{ reservation.salleid.numero }}</th>
+                <td>{{ reservation.dateDebut|date('d/m/Y H:i') }}</td>
+                <td>{{ reservation.duree }}</td>
+                <td><a class="btn btn-outline-info" href="{{ path('ma-reservation',{"id":reservation
+                        .id}) }}">Détails</a></td>
+            </tr>
+        {% endfor %}
+    </table>
+{% endblock %}

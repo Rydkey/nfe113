@@ -1,0 +1,10 @@
+INSERT INTO public.personne (id, isadmin, nom, prenom, login, pwd) VALUES (1, true, 'Admin', 'Admin', 'Admin', 'Admin');
+INSERT INTO public.personne (id, isadmin, nom, prenom, login, pwd) VALUES (4, false, 'Juarez', 'Carlos', 'j.carlos', 'j.carlos');
+INSERT INTO public.personne (id, isadmin, nom, prenom, login, pwd) VALUES (5, false, 'Hokajima', 'Saito', 'h.saito', 'h.saito');
+INSERT INTO public.personne (id, isadmin, nom, prenom, login, pwd) VALUES (6, false, 'Benhahim', 'Mamadou', 'b.mamadou', 'b.mamadou');
+INSERT INTO public.personne (id, isadmin, nom, prenom, login, pwd) VALUES (7, true, 'Dupond', 'Frank', 'd.frank', 'd.frank');
+INSERT INTO public.personne (id, isadmin, nom, prenom, login, pwd) VALUES (8, false, 'Nguyen', 'Ling', 'n.ling', 'n.ling');
+INSERT INTO public.personne (id, isadmin, nom, prenom, login, pwd) VALUES (9, false, 'Piazi', 'Antonio', 'p.antonio', 'p.antonio');
+INSERT INTO public.personne (id, isadmin, nom, prenom, login, pwd) VALUES (10, false, 'Dupond', 'Carla', 'd.carla', 'd.carla');
+INSERT INTO public.personne (id, isadmin, nom, prenom, login, pwd) VALUES (11, false, 'Voktoski', 'Andreïa', 'v.andreia', 'v.andreia');
+INSERT INTO public.personne (id, isadmin, nom, prenom, login, pwd) VALUES (12, true, 'Smith', 'Judith', 's.judith', 'd.judith');

@@ -1,0 +1,10 @@
+INSERT INTO public.salle (id, typesalleid, numero, capacite) VALUES (1, 1, '100', 1);
+INSERT INTO public.salle (id, typesalleid, numero, capacite) VALUES (2, 2, '101', 4);
+INSERT INTO public.salle (id, typesalleid, numero, capacite) VALUES (3, 3, '102', 6);
+INSERT INTO public.salle (id, typesalleid, numero, capacite) VALUES (4, 4, '103', 1);
+INSERT INTO public.salle (id, typesalleid, numero, capacite) VALUES (5, 5, '201', 4);
+INSERT INTO public.salle (id, typesalleid, numero, capacite) VALUES (6, 6, '202', 1);
+INSERT INTO public.salle (id, typesalleid, numero, capacite) VALUES (11, 1, '300', 1);
+INSERT INTO public.salle (id, typesalleid, numero, capacite) VALUES (12, 1, '301', 4);
+INSERT INTO public.salle (id, typesalleid, numero, capacite) VALUES (13, 2, '302', 6);
+INSERT INTO public.salle (id, typesalleid, numero, capacite) VALUES (14, 3, '304', 1);

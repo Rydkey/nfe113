@@ -48,8 +48,8 @@
     <schema id="11" parent="2" name="public">
       <ObjectId>2200</ObjectId>
       <Comment>standard public schema</Comment>
-      <IntrospectionTimestamp>2018-06-24.00:07:04.494</IntrospectionTimestamp>
-      <IntrospectionStateNumber>747</IntrospectionStateNumber>
+      <IntrospectionTimestamp>2018-06-24.13:59:46.506</IntrospectionTimestamp>
+      <IntrospectionStateNumber>797</IntrospectionStateNumber>
       <Current>1</Current>
       <Visible>1</Visible>
     </schema>
@@ -114,15 +114,15 @@
     </sequence>
     <table id="23" parent="11" name="personne">
       <ObjectId>16387</ObjectId>
-      <StateNumber>728</StateNumber>
+      <StateNumber>795</StateNumber>
     </table>
     <table id="24" parent="11" name="personnereserve">
       <ObjectId>16524</ObjectId>
-      <StateNumber>728</StateNumber>
+      <StateNumber>797</StateNumber>
     </table>
     <table id="25" parent="11" name="reserve">
       <ObjectId>16400</ObjectId>
-      <StateNumber>747</StateNumber>
+      <StateNumber>797</StateNumber>
     </table>
     <table id="26" parent="11" name="salle">
       <ObjectId>16408</ObjectId>
@@ -232,22 +232,26 @@
       <Primary>1</Primary>
     </key>
     <foreign-key id="43" parent="24" name="personnereserve_personne_id_fk">
-      <ObjectId>16530</ObjectId>
+      <ObjectId>16549</ObjectId>
       <ColNames>personneid</ColNames>
       <RefTableId>16387</RefTableId>
       <RefColPositions>1</RefColPositions>
       <RefTableName>personne</RefTableName>
       <RefKeyName>pk_personne</RefKeyName>
       <RefColNames>id</RefColNames>
+      <OnDelete>cascade</OnDelete>
+      <OnUpdate>cascade</OnUpdate>
     </foreign-key>
     <foreign-key id="44" parent="24" name="personnereserve_reserve_id_fk">
-      <ObjectId>16535</ObjectId>
+      <ObjectId>16554</ObjectId>
       <ColNames>reserveid</ColNames>
       <RefTableId>16400</RefTableId>
       <RefColPositions>1</RefColPositions>
       <RefTableName>reserve</RefTableName>
       <RefKeyName>reserve_id_pk</RefKeyName>
       <RefColNames>id</RefColNames>
+      <OnDelete>cascade</OnDelete>
+      <OnUpdate>cascade</OnUpdate>
     </foreign-key>
     <column id="45" parent="25" name="id">
       <Position>1</Position>

@@ -18,6 +18,10 @@ use Symfony\Component\HttpFoundation\Request;
  * @throws Exception
  */
 
+function reservationDelete(Application $app,$id){
+
+}
+
 function reservationDetail(Application $app, $id)
 {
   $em = $app["orm.em"];
@@ -31,6 +35,8 @@ function newReservation(Request $request, Application $app, $salleId)
   $connectedUser = $app['session']->get('user')['info'][0];
   $reserve = new Reserve();
   $em = $app['orm.em'];
+  $user = $em->getRepository(Personne::class)->find($connectedUser->getId());
+  var_dump($user->getId());
   $formBuilder = $app['form.factory']->createBuilder(NewReservationType::class, $reserve);
   $form = $formBuilder->getForm();
   $form->handleRequest($request);
@@ -39,9 +45,9 @@ function newReservation(Request $request, Application $app, $salleId)
       $salle = _getSalle($salleId, $app);
       $result = $request->request->get('new_reservation');
       if (!isset($result['personneId'])) {
-        $result['personneId'][] = $connectedUser;
-      } else if (!in_array(strval($connectedUser->getId()), $result['personneId'])) {
-        $result['personneId'][] = $connectedUser;
+        $reserve->addPersonneId($user);
+      } else if (!in_array(strval($user->getId()), $result['personneId'])) {
+        $reserve->addPersonneId($user);
       }
       $testDate = new DateTime($result['dateDebut']["date"]);
       $testTime = $result['dateDebut']["time"];
@@ -50,18 +56,19 @@ function newReservation(Request $request, Application $app, $salleId)
         $app['session']->getFlashBag()->add('error', "La date renseignée est inférieur à celle d'aujourd'hui");
       } elseif (intval($testTime['hour']) + intval($result["duree"]) > 18) {
         $app['session']->getFlashBag()->add('error', "Vous ne pouvez pas reserver après l'heure de fermeture");
-      } elseif (!_checkCapacite(count($result['personneId']), $app, $salle)) {
+      } elseif (!_checkCapacite(count($reserve->getPersonneId()), $app, $salle)) {
         $app['session']->getFlashBag()->add('error', "La capacité de cette salle de correspond pas au nombre de personnes");
       } else {
         $reserve->setSalleId($salle);
         $reserve->setStatus(1);
         $reserve->setCode(randomPassword());
+
         $test = new DateTime($reserve->getDateDebut()->format("Y-m-d H:i:s"));
         $reserve->setDateFin($test);
         $reserve->getDateFin()->add(new DateInterval('PT' . $result['duree'] . 'H'));
         if (isDisponible($reserve->getDateDebut(), $reserve->getDateFin(), $salleId, $app)) {
           $em->persist($reserve);
-          $em->flush($reserve);
+          $em->flush();
           $app['session']->getFlashbag()->add('notice', 'Réservation prise en compte');
         } else {
           $app['session']->getFlashBag()->add('error', "La salle n'est pas disponible sur ce créneaux");

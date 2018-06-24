@@ -49,3 +49,12 @@ $app->match($dir . "ma-reservation/{id}", function (Request $request, $id) use (
     return reservationDetail($app, $id);
   }
 })->bind("ma-reservation");
+
+$app->match($dir . "reservation/delete/{id}", function (Request $request, $id) use ($app) {
+  if ($app['session']->get('user')['info'] == null) {
+    return $app->redirect($app['url_generator']->generate("connection"));
+  } else {
+    return reservationDelete($app, $id);
+  }
+})->bind("delete-reservation");
+

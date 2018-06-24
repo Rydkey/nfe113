@@ -1,6 +1,3 @@
-create database "NFE113"
-;
-
 create table personne
 (
 	id serial not null
@@ -67,10 +64,12 @@ create table personnereserve
 			primary key,
 	personneid integer not null
 		constraint personnereserve_personne_id_fk
-			references personne,
+			references personne
+				on update cascade on delete cascade,
 	reserveid integer not null
 		constraint personnereserve_reserve_id_fk
 			references reserve
+				on update cascade on delete cascade
 )
 ;
 

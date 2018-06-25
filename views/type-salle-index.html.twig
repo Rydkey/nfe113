@@ -1,0 +1,29 @@
+{% extends "layout.html.twig" %}
+{#mettre le contenue de la page dans les balises block#}
+
+{#notifications#}
+
+{% block content %}
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Libellé</th>
+            <th scope="col">Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for typesalle in typesalles %}
+            <tr>
+                <th scope="row"> {{ typesalle.id }}</th>
+                <td>{{ typesalle.nom }}</td>
+                <th scope="col">
+                    <a class="btn btn-outline-primary"
+                       href="{{ path('update-typesalle',{"id":typesalle.id}) }}">Modification</a>
+                    <a class="btn btn-outline-danger" href="{{ path('delete-typesalle',{"id":typesalle.id}) }}">Supprimer</a>
+                </th>
+
+            </tr>
+        {% endfor %}
+    </table>
+{% endblock %}

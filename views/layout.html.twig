@@ -31,37 +31,33 @@
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav">
             {% if app.session.get("user") is not empty %}
-                <div class="dropdown">
-                    <button class="btn btn-secondary dropdown-toggle" type="button"
-                            id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
-                            aria-expanded="false">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Actions
-                    </button>
+                    </a>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        {#<a class="dropdown-item" href="{{ path('reservation') }}">Faire une#}
-                        {#réservation</a>#}
                         {% if app.session.get('user')['info']['0'].isAdmin == true %}
-                            <a class="dropdown-item" href="">Agenda </a>
-                            <a class="dropdown-item" href="">Gestion Salle </a>
-                            <a class="dropdown-item" href="">Réservation </a>
+                            <a class="dropdown-item" href="{{ path("all-reservation") }}">Agenda </a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="{{ path("new-salle") }}">Ajouter un salle </a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="{{ path("all-typesalle") }}">Gestion des types de salle </a>
+                            <a class="dropdown-item" href="{{ path("new-typesalle") }}">Ajouter un type de salle </a>
                         {% else %}
                             <a class="dropdown-item" href="{{ path('mes-reservations') }}">Mes
                                 réservation</a>
                         {% endif %}
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="{{ path('deconnection') }}">Déconnexion</a>
                     </div>
-                </div>
+                </li>
             {% endif %}
         </ul>
         <ul class="nav navbar-nav ml-auto">
             {% if app.session.get("user") is not empty %}
-                <li class="nav-item">
-                    <a class="btn btn-sm btn-outline-info my-2 my-sm-0" href="#">{{ app
-                        .session.get('user')['info']['0'].login }}</a>
-                </li>
-                <li class="navbar-nav">
-                    <a class="btn btn-sm btn-outline-danger my-2 my-sm-0"
-                       href="{{ path('deconnection') }}">déconnection</a>
-                </li>
+                <span class="navbar-text"> {{ app
+                    .session.get('user')['info']['0'].login }}</span>
             {% else %}
                 <a class="btn btn-sm btn-outline-success my-2 my-sm-0"
                    href="{{ path('connection') }}">connection</a>
@@ -71,14 +67,10 @@
 </nav>
 
 <div class="container">
-    <div class="row">
-        <div class="col-12">
-            <br>
-            {% block content %}
-                {#C'est ici que sera integerer le contenue de la page#}
-            {% endblock %}
-        </div>
-    </div>
+    <br>
+    {% block content %}
+        {#C'est ici que sera integerer le contenue de la page#}
+    {% endblock %}
 </div>
 
 </body>

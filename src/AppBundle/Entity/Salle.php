@@ -24,7 +24,6 @@ use Doctrine\ORM\Mapping\Table;
 class Salle
 {
   /**
-   * @var int
    *
    * @Column(name="id", type="integer")
    * @Id

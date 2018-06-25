@@ -12,7 +12,7 @@ $db_config = array(
   'port'     => '5432',  //port du serveur
   'dbname'   => 'NFE113',  //nom de la BDD
   'user'     => 'postgres', //Utilisateur
-  'password' => 'Remy6790+', //mot de passe
+  'password' => 'Remy9097*', //mot de passe
 );
 
 $app['orm.proxies_dir'] = __DIR__.'/../cache/doctrine/proxies';

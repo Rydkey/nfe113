@@ -30,7 +30,7 @@ $app->extend('form.extensions', function ($extensions, $app) {
 $app->register(new Silex\Provider\TwigServiceProvider(),
   array(
     'twig.path'           => __DIR__ . '/../views',
-    'twig.form.templates' => ["bootstrap_3_horizontal_layout.html.twig"]
+    'twig.form.templates' => ["bootstrap_3_layout.html.twig"]
   ));
 $app->register(new Silex\Provider\DoctrineServiceProvider());
 $app['db.options'] = array('driver'   => BDD['driver'],

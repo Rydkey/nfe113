@@ -36,6 +36,10 @@ create table salle
 )
 ;
 
+create unique index salle_numero_uindex
+	on salle (numero)
+;
+
 create table reserve
 (
 	id serial not null
@@ -51,10 +55,6 @@ create table reserve
 	code varchar(255) not null,
 	status integer not null
 )
-;
-
-create unique index salle_numero_uindex
-	on salle (numero)
 ;
 
 create table personnereserve

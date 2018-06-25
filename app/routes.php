@@ -50,11 +50,70 @@ $app->match($dir . "ma-reservation/{id}", function (Request $request, $id) use (
   }
 })->bind("ma-reservation");
 
-$app->match($dir . "reservation/delete/{id}", function (Request $request, $id) use ($app) {
+$app->match($dir . "reservations/all", function (Request $request) use ($app) {
+  if ($app['session']->get('user')['info'] == null || !$app['session']->get('user')['info'][0]->getIsAdmin()) {
+    return $app->redirect($app['url_generator']->generate("home"));
+  } else {
+    return reservationAllDetail($app);
+  }
+})->bind("all-reservation");
+
+$app->match($dir . "reservation-delete/{id}", function (Request $request, $id) use ($app) {
   if ($app['session']->get('user')['info'] == null) {
-    return $app->redirect($app['url_generator']->generate("connection"));
+    return $app->redirect($app['url_generator']->generate("home"));
   } else {
     return reservationDelete($app, $id);
   }
 })->bind("delete-reservation");
 
+$app->match($dir . "ajouter-salle", function (Request $request) use ($app) {
+  if ($app['session']->get('user')['info'] == null || !$app['session']->get('user')['info'][0]->getIsAdmin()) {
+    return $app->redirect($app['url_generator']->generate("home"));
+  } else {
+    return newSalle($request, $app);
+  }
+})->bind("new-salle");
+
+$app->match($dir . "modifier-salle/{id}", function (Request $request, $id) use ($app) {
+  if ($app['session']->get('user')['info'] == null || !$app['session']->get('user')['info'][0]->getIsAdmin()) {
+    return $app->redirect($app['url_generator']->generate("home"));
+  } else {
+    return updateSalle($request, $app, $id);
+  }
+})->bind("update-salle");
+
+$app->match($dir . "supprimer-salle/{id}", function (Request $request, $id) use ($app) {
+  if ($app['session']->get('user')['info'] == null || !$app['session']->get('user')['info'][0]->getIsAdmin()) {
+    return $app->redirect($app['url_generator']->generate("home"));
+  } else {
+    return deleteSalle($app, $id);
+  }
+})->bind("delete-salle");
+
+$app->match($dir . 'type-salle/all', function () use ($app) {
+  return indexTypeSalle($app);
+})->bind('all-typesalle');
+
+$app->match($dir . "ajouter-type-salle", function (Request $request) use ($app) {
+  if ($app['session']->get('user')['info'] == null || !$app['session']->get('user')['info'][0]->getIsAdmin()) {
+    return $app->redirect($app['url_generator']->generate("home"));
+  } else {
+    return newTypeSalle($request, $app);
+  }
+})->bind("new-typesalle");
+
+$app->match($dir . "modifier-type-salle/{id}", function (Request $request, $id) use ($app) {
+  if ($app['session']->get('user')['info'] == null || !$app['session']->get('user')['info'][0]->getIsAdmin()) {
+    return $app->redirect($app['url_generator']->generate("home"));
+  } else {
+    return updateTypeSalle($request, $app, $id);
+  }
+})->bind("update-typesalle");
+
+$app->match($dir . "supprimer-type-salle/{id}", function (Request $request, $id) use ($app) {
+  if ($app['session']->get('user')['info'] == null || !$app['session']->get('user')['info'][0]->getIsAdmin()) {
+    return $app->redirect($app['url_generator']->generate("home"));
+  } else {
+    return deleteTypeSalle($app, $id);
+  }
+})->bind("delete-typesalle");

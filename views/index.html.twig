@@ -4,6 +4,23 @@
 {#notifications#}
 
 {% block content %}
+    {#notifications#}
+    {% for message in app.session.getFlashBag.get('notice') %}
+        <div class="alert alert-success alert-dismissible fade show">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">
+                &times;
+            </button>
+            {{ message }}
+        </div>
+    {% endfor %}
+    {% for message in app.session.getFlashBag.get('warning') %}
+        <div class="alert alert-warning alert-dismissible fade show">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">
+                &times;
+            </button>
+            {{ message }}
+        </div>
+    {% endfor %}
     <table class="table">
         <thead>
         <tr>
@@ -26,7 +43,8 @@
                         <a class="btn btn-outline-success" href="{{ path('reservation',
                             {'salleid': salle.id}) }}">Réserver</a>
                         {% if app.session.get('user')['info']['0'].isAdmin is not empty %}
-                            <a class="btn btn-outline-primary" href="">Modification</a>
+                            <a class="btn btn-outline-primary" href="{{ path('update-salle',{"id":salle.id}) }}">Modification</a>
+                            <a class="btn btn-outline-danger" href="{{ path('delete-salle',{"id":salle.id}) }}">Supprimer</a>
                         {% endif %}
                     </th>
                 {% endif %}

@@ -25,7 +25,7 @@ function connectionController(Request $request, Application $app)
       $repository = $em->getRepository(Personne::class);
       $result = $repository->findBy([
         'login' => $request->request->get("connection")["login"],
-        'pwd'   => $request->request->get("connection")["pwd"],
+        'pwd' => md5($request->request->get("connection")["pwd"]),
       ]);
       if (!empty($result)) {
         $app['session']->set("user", ["info" => $result]);

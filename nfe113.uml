@@ -3,38 +3,37 @@
   <ID>DATABASE</ID>
   <OriginalElement>b908f129-1441-4712-818d-1302300514dd.TABLE:NFE113.public.personne</OriginalElement>
   <nodes>
-    <node x="277.0" y="229.5">b908f129-1441-4712-818d-1302300514dd.TABLE:NFE113.public.personnereserve</node>
-    <node x="271.5" y="435.0">b908f129-1441-4712-818d-1302300514dd.TABLE:NFE113.public.personne</node>
-    <node x="-10.5" y="183.5">b908f129-1441-4712-818d-1302300514dd.TABLE:NFE113.public.reserve</node>
-    <node x="-12.0" y="-22.0">b908f129-1441-4712-818d-1302300514dd.TABLE:NFE113.public.salle</node>
-    <node x="278.0" y="1.0">b908f129-1441-4712-818d-1302300514dd.TABLE:NFE113.public.typesalle</node>
+    <node x="29.0" y="243.0">b908f129-1441-4712-818d-1302300514dd.TABLE:NFE113.public.personnereserve</node>
+    <node x="1.0" y="0.0">b908f129-1441-4712-818d-1302300514dd.TABLE:NFE113.public.typesalle</node>
+    <node x="4.5" y="162.0">b908f129-1441-4712-818d-1302300514dd.TABLE:NFE113.public.reserve</node>
+    <node x="13.0" y="81.0">b908f129-1441-4712-818d-1302300514dd.TABLE:NFE113.public.salle</node>
+    <node x="286.88461538461536" y="399.6923076923077">b908f129-1441-4712-818d-1302300514dd.TABLE:NFE113.public.personne</node>
   </nodes>
   <notes />
   <edges>
     <edge source="b908f129-1441-4712-818d-1302300514dd.TABLE:NFE113.public.reserve" target="b908f129-1441-4712-818d-1302300514dd.TABLE:NFE113.public.salle">
-      <point x="0.0" y="-96.5" />
-      <point x="0.0" y="62.0" />
-    </edge>
-    <edge source="b908f129-1441-4712-818d-1302300514dd.TABLE:NFE113.public.salle" target="b908f129-1441-4712-818d-1302300514dd.TABLE:NFE113.public.typesalle">
-      <point x="92.0" y="0.0" />
-      <point x="-82.0" y="0.0" />
+      <point x="0.0" y="-15.5" />
+      <point x="0.0" y="15.5" />
     </edge>
     <edge source="b908f129-1441-4712-818d-1302300514dd.TABLE:NFE113.public.personnereserve" target="b908f129-1441-4712-818d-1302300514dd.TABLE:NFE113.public.reserve">
-      <point x="-83.0" y="0.0" />
-      <point x="90.5" y="0.0" />
+      <point x="-32.5" y="-15.5" />
+      <point x="61.5" y="218.0" />
+      <point x="43.0" y="218.0" />
+      <point x="0.0" y="15.5" />
+    </edge>
+    <edge source="b908f129-1441-4712-818d-1302300514dd.TABLE:NFE113.public.salle" target="b908f129-1441-4712-818d-1302300514dd.TABLE:NFE113.public.typesalle">
+      <point x="0.0" y="-15.5" />
+      <point x="0.0" y="15.5" />
     </edge>
     <edge source="b908f129-1441-4712-818d-1302300514dd.TABLE:NFE113.public.personnereserve" target="b908f129-1441-4712-818d-1302300514dd.TABLE:NFE113.public.personne">
-      <point x="0.0" y="50.5" />
-      <point x="0.0" y="-85.0" />
+      <point x="32.5" y="-15.5" />
+      <point x="126.5" y="218.0" />
+      <point x="145.0" y="218.0" />
+      <point x="0.0" y="15.5" />
     </edge>
   </edges>
-  <settings layout="Hierarchic Group" zoom="1.0" x="190.0" y="291.0" />
-  <SelectedNodes>
-    <node>b908f129-1441-4712-818d-1302300514dd.TABLE:NFE113.public.personne</node>
-  </SelectedNodes>
-  <Categories>
-    <Category>Key columns</Category>
-    <Category>Columns</Category>
-  </Categories>
+  <settings layout="Hierarchic Group" zoom="1.3000000000000003" x="278.076923076923" y="210.3846153846153" />
+  <SelectedNodes />
+  <Categories />
 </Diagram>
 

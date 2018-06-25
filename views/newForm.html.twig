@@ -28,15 +28,16 @@
         </div>
     {% endfor %}
     {{ form_start(form) }}
-    <table>
+
         {% for input in form %}
             <tr>
                 <td>{{ form_label(input) }}</td>
                 <td>{{ form_widget(input) }}</td>
             </tr>
         {% endfor %}
-    </table>
+
     {{ form_widget(form) }}
-    <input type="submit" name="submit" class="btn btn-lg btn-success"/>
+    <hr>
+    <input type="submit" name="submit" class="btn btn-lg btn-success float-lg-right"/>
     {{ form_end(form) }}
 {% endblock %}

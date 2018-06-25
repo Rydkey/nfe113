@@ -12,7 +12,6 @@ use AppBundle\Entity\Salle;
 
 function testController(Silex\Application $app)
 {
-  ;
   return $app['twig']->render('test.html.twig');
 }
 

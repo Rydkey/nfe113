@@ -26,5 +26,6 @@ vous trouverez ici le travail réalisé par RISSER Rémy, étudiant au CNAM de b
         );
 <hr>
     <p> <i>1 : l'application nécéssite un cache accéssible en écriture</i> </p>
+    <p> <i>2 : Vous trouverez un .zip contenant tout le projet dans ce répertoire.</i> </p>
     
     

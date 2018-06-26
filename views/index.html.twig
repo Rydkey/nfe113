@@ -40,11 +40,11 @@
                 <td>{{ salle.capacite }}</td>
                 {% if app.session.get('user') is not empty %}
                     <th scope="col">
-                        <a class="btn btn-outline-success" href="{{ path('reservation',
+                        <a class="btn btn-sm btn-outline-success" href="{{ path('reservation',
                             {'salleid': salle.id}) }}">Réserver</a>
                         {% if app.session.get('user')['info']['0'].isAdmin is not empty %}
-                            <a class="btn btn-outline-primary" href="{{ path('update-salle',{"id":salle.id}) }}">Modification</a>
-                            <a class="btn btn-outline-danger" href="{{ path('delete-salle',{"id":salle.id}) }}">Supprimer</a>
+                            <a class="btn btn-sm btn-outline-primary" href="{{ path('update-salle',{"id":salle.id}) }}">Modification</a>
+                            <a class="btn btn-sm btn-outline-danger" href="{{ path('delete-salle',{"id":salle.id}) }}">Supprimer</a>
                         {% endif %}
                     </th>
                 {% endif %}

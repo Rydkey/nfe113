@@ -6,13 +6,13 @@
  * Time: 14:39
  */
 $db_config = array(
-  'driver'   => 'pdo_pgsql', //définit le driver pour la BDD
-  'charset'  => 'utf8', //définit le charset pour la BDD
-  'host'     => 'localhost',  //serveur pour la BDD
-  'port'     => '5432',  //port du serveur
-  'dbname'   => 'NFE113',  //nom de la BDD
-  'user'     => 'postgres', //Utilisateur
-  'password' => 'Remy9097*', //mot de passe
+  'driver'   => 'pdo_pgsql',
+  'charset'  => 'utf8',
+  'host'     => 'localhost',
+  'port'     => '5432',
+  'dbname'   => 'NFE113',
+  'user'     => 'votre identifiant',
+  'password' => 'votre mot de passe',
 );
 
 $app['orm.proxies_dir'] = __DIR__.'/../cache/doctrine/proxies';
